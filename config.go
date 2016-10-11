@@ -7,11 +7,11 @@ import (
 	"github.com/garyburd/redigo/redis"
 )
 
-// GetRedisConfig() returns the Redis Config.
+// GetConfig() returns the Redis Config.
 //
 //     Return:
 //         config: key: parameter name, value: parameter value.
-func GetRedisConfig(c redis.Conn) (config map[string]string, err error) {
+func GetConfig(c redis.Conn) (config map[string]string, err error) {
 	config = make(map[string]string)
 	l := 0
 

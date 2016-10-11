@@ -7,10 +7,10 @@ import (
 	"github.com/northbright/redishelper"
 )
 
-func ExampleGetRedisConfig() {
+func ExampleGetConfig() {
 	config := make(map[string]string)
 
-	log.Printf("-------- GetRedisConfig() Test Start --------\n")
+	log.Printf("-------- GetConfig() Test Start --------\n")
 
 	c, err := redis.Dial("tcp", ":6379")
 	if err != nil {
@@ -18,7 +18,7 @@ func ExampleGetRedisConfig() {
 	}
 	defer c.Close()
 
-	config, err = redishelper.GetRedisConfig(c)
+	config, err = redishelper.GetConfig(c)
 	if err != nil {
 		goto end
 	}
@@ -31,6 +31,6 @@ end:
 	if err != nil {
 		log.Printf("error: %v\n", err)
 	}
-	log.Printf("-------- GetRedisConfig() Test End --------\n\n")
+	log.Printf("-------- GetConfig() Test End --------\n\n")
 	// Output:
 }
