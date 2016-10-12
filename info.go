@@ -10,7 +10,7 @@ import (
 // GetInfo() returns the Redis Info.
 //
 //     Return:
-//         config: key: parameter name, value: parameter value.
+//         info: key: section name, value: map[string]string. key: info name, value: info value.
 func GetInfo(c redis.Conn) (info map[string]map[string]string, err error) {
 	info = make(map[string]map[string]string)
 	sections := []string{}
