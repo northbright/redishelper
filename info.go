@@ -42,7 +42,7 @@ func GetInfo(c redis.Conn) (info map[string]map[string]string, err error) {
 		for i := 1; i < l; i++ {
 			arr := strings.Split(items[i], ":")
 			if len(arr) != 2 {
-				err = errors.New("No paramter found.")
+				err = errors.New("No parameter found.")
 				goto end
 			}
 			k, v := arr[0], arr[1]
