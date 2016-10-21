@@ -1,7 +1,6 @@
 package redishelper
 
 import (
-	"errors"
 	"fmt"
 
 	"github.com/garyburd/redigo/redis"
@@ -22,7 +21,7 @@ func GetConfig(c redis.Conn) (config map[string]string, err error) {
 
 	l = len(items)
 	if l == 0 || l%2 != 0 {
-		err = errors.New(fmt.Sprintf("Command \"CONFIG GET *\" return error: %v\n", items))
+		err = fmt.Errorf("Command \"CONFIG GET *\" return error: %v\n", items)
 		goto end
 	}
 
