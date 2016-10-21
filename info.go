@@ -7,7 +7,7 @@ import (
 	"github.com/garyburd/redigo/redis"
 )
 
-// GetInfo() returns the Redis Info.
+// GetInfo returns the Redis Info.
 //
 //     Return:
 //         info: key: section name, value: map[string]string. key: info name, value: info value.

@@ -6,7 +6,7 @@ import (
 	"github.com/garyburd/redigo/redis"
 )
 
-// GetConfig() returns the Redis Config.
+// GetConfig returns the Redis Config.
 //
 //     Return:
 //         config: key: parameter name, value: parameter value.
