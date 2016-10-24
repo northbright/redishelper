@@ -1,7 +1,7 @@
 package redishelper
 
 import (
-	"errors"
+	"fmt"
 	"strings"
 
 	"github.com/garyburd/redigo/redis"
@@ -27,13 +27,13 @@ func GetInfo(c redis.Conn) (info map[string]map[string]string, err error) {
 		items := strings.Split(s, "\r\n")
 		l := len(items)
 		if l == 0 {
-			err = errors.New("No INFO sections found.")
+			err = fmt.Errorf("No INFO sections found.")
 			goto end
 		}
 
 		arr := strings.Split(items[0], "# ")
 		if len(arr) != 2 {
-			err = errors.New("No section name found.")
+			err = fmt.Errorf("No section name found.")
 			goto end
 		}
 
@@ -42,7 +42,7 @@ func GetInfo(c redis.Conn) (info map[string]map[string]string, err error) {
 		for i := 1; i < l; i++ {
 			arr := strings.Split(items[i], ":")
 			if len(arr) != 2 {
-				err = errors.New("No parameter found.")
+				err = fmt.Errorf("No parameter found.")
 				goto end
 			}
 			k, v := arr[0], arr[1]
