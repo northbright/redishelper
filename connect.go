@@ -31,7 +31,7 @@ func GetRedisConn(redisAddr, redisPassword string) (c redis.Conn, err error) {
 	}
 end:
 	if err != nil {
-		fmt.Printf("GetRedisConn() error: %v\n", err)
+		log.Printf("GetRedisConn() error: %v\n", err)
 	}
 	return c, err
 }
