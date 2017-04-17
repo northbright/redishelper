@@ -51,9 +51,5 @@ func GetInfo(c redis.Conn) (info map[string]map[string]string, err error) {
 	}
 
 end:
-	if err != nil {
-		return make(map[string]map[string]string), err
-	}
-
-	return info, nil
+	return info, err
 }

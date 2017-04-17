@@ -30,9 +30,5 @@ func GetConfig(c redis.Conn) (config map[string]string, err error) {
 	}
 
 end:
-	if err != nil {
-		return make(map[string]string), err
-	}
-
-	return config, nil
+	return config, err
 }
