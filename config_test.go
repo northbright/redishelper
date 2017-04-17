@@ -1,6 +1,7 @@
 package redishelper_test
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/garyburd/redigo/redis"
@@ -29,7 +30,7 @@ func ExampleGetConfig() {
 	}
 end:
 	if err != nil {
-		log.Printf("error: %v\n", err)
+		fmt.Printf("error: %v\n", err)
 	}
 	log.Printf("-------- GetConfig() Test End --------\n\n")
 	// Output:
