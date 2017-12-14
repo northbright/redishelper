@@ -7,13 +7,23 @@ import (
 )
 
 // NewRedisPool creates a new pool.
-func NewRedisPool(redisAddr, redisPassword string, maxIdle, maxActive, idleTimeout int) *redis.Pool {
+//
+// Params:
+//     redisServer: redis server address.
+//     redisPassword: redis password. Leave it empty if there's no password.
+//     maxIdle: Maximum number of idle connections in the pool.
+//     maxActive: Maximum number of connections allocated by the pool at a given time.
+//                When zero, there is no limit on the number of connections in the pool.
+//     idleTimeout: Close connections after remaining idle for this duration. If the value
+//                  is zero, then idle connections are not closed. Applications should set
+//                  the timeout to a value less than the server's timeout.
+func NewRedisPool(redisServer, redisPassword string, maxIdle, maxActive, idleTimeout int) *redis.Pool {
 	pool := &redis.Pool{
 		MaxIdle:     maxIdle,
 		MaxActive:   maxActive,
 		IdleTimeout: time.Duration(idleTimeout) * time.Second,
 		Dial: func() (redis.Conn, error) {
-			c, err := redis.Dial("tcp", redisAddr)
+			c, err := redis.Dial("tcp", redisServer)
 			if err != nil {
 				return nil, err
 			}
