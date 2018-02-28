@@ -15,11 +15,12 @@ func ExampleNewRedisPool() {
 		maxActive          = 1000 // try 10000(too many tcp connections.)
 		maxIdle            = 100
 		idleTimeout        = 60
+		wait               = true
 		limitedConcurrency = 2000 // try 2000(>maxActive, pool exhausted.)
 		concurrency        = limitedConcurrency * 2
 	)
 
-	pool := redishelper.NewRedisPool(":6379", "", maxActive, maxIdle, idleTimeout)
+	pool := redishelper.NewRedisPool(":6379", "", maxActive, maxIdle, idleTimeout, wait)
 	defer pool.Close()
 
 	sem := make(chan struct{}, limitedConcurrency)

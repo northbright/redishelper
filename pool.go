@@ -17,11 +17,12 @@ import (
 //     idleTimeout: Close connections after remaining idle for this duration. If the value
 //                  is zero, then idle connections are not closed. Applications should set
 //                  the timeout to a value less than the server's timeout.
-func NewRedisPool(redisServer, redisPassword string, maxActive, maxIdle, idleTimeout int) *redis.Pool {
+func NewRedisPool(redisServer, redisPassword string, maxActive, maxIdle, idleTimeout int, wait bool) *redis.Pool {
 	pool := &redis.Pool{
 		MaxIdle:     maxIdle,
 		MaxActive:   maxActive,
 		IdleTimeout: time.Duration(idleTimeout) * time.Second,
+		Wait:        wait,
 		Dial: func() (redis.Conn, error) {
 			c, err := redis.Dial("tcp", redisServer)
 			if err != nil {
