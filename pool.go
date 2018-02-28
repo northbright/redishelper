@@ -17,6 +17,8 @@ import (
 //     idleTimeout: Close connections after remaining idle for this duration. If the value
 //                  is zero, then idle connections are not closed. Applications should set
 //                  the timeout to a value less than the server's timeout.
+//     wait: If Wait is true and the pool is at the MaxActive limit, then Get() waits
+//           for a connection to be returned to the pool before returning.
 func NewRedisPool(redisServer, redisPassword string, maxActive, maxIdle, idleTimeout int, wait bool) *redis.Pool {
 	pool := &redis.Pool{
 		MaxIdle:     maxIdle,
