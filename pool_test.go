@@ -15,7 +15,7 @@ func ExampleNewRedisPool() {
 		maxActive          = 1000 // try 10000(too many tcp connections.)
 		maxIdle            = 100
 		idleTimeout        = 60
-		wait               = true
+		wait               = false
 		limitedConcurrency = 2000 // try 2000(>maxActive, pool exhausted.)
 		concurrency        = limitedConcurrency * 2
 	)
