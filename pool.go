@@ -3,7 +3,7 @@ package redishelper
 import (
 	"time"
 
-	"github.com/garyburd/redigo/redis"
+	"github.com/gomodule/redigo/redis"
 )
 
 // NewRedisPool creates a new pool.
