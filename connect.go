@@ -2,7 +2,6 @@ package redishelper
 
 import (
 	"fmt"
-	"log"
 
 	"github.com/gomodule/redigo/redis"
 )
@@ -12,26 +11,22 @@ func GetRedisConn(redisAddr, redisPassword string) (c redis.Conn, err error) {
 	pongStr := ""
 
 	if c, err = redis.Dial("tcp", redisAddr); err != nil {
-		goto end
+		return nil, err
 	}
 
 	if len(redisPassword) != 0 {
 		if _, err = c.Do("AUTH", redisPassword); err != nil {
-			goto end
+			return nil, err
 		}
 	}
 
 	if pongStr, err = redis.String(c.Do("PING")); err != nil {
-		goto end
+		return nil, err
 	}
 
 	if pongStr != "PONG" {
-		err = fmt.Errorf("Redis PING != PONG(%v)", pongStr)
-		goto end
+		return nil, fmt.Errorf("Redis PING != PONG(%v)", pongStr)
 	}
-end:
-	if err != nil {
-		log.Printf("GetRedisConn() error: %v\n", err)
-	}
-	return c, err
+
+	return c, nil
 }

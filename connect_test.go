@@ -1,7 +1,6 @@
 package redishelper_test
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/gomodule/redigo/redis"
@@ -14,20 +13,13 @@ func ExampleGetRedisConn() {
 	redisAddr := ":6379"
 	redisPassword := ""
 
-	log.Printf("-------- GetRedisConn() Test Start --------\n")
-
 	if c, err = redishelper.GetRedisConn(redisAddr, redisPassword); err != nil {
-		goto end
+		log.Printf("GetRedisConn() error: %v", err)
+		return
 	}
 	defer c.Close()
 
 	log.Printf("Get Redis connection successfully.\n")
 
-end:
-	if err != nil {
-		fmt.Printf("GetRedisConn() error: %v\n", err)
-	}
-
-	log.Printf("-------- GetRedisConn() Test End --------\n\n")
 	// Output:
 }
