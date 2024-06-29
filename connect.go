@@ -25,7 +25,7 @@ func GetRedisConn(redisAddr, redisPassword string) (c redis.Conn, err error) {
 	}
 
 	if pongStr != "PONG" {
-		return nil, fmt.Errorf("Redis PING != PONG(%v)", pongStr)
+		return nil, fmt.Errorf("redis PING != PONG(%v)", pongStr)
 	}
 
 	return c, nil
