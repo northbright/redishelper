@@ -7,7 +7,7 @@ import (
 	"github.com/northbright/redishelper"
 )
 
-func ExampleNewRedisPool() {
+func ExampleNewPool() {
 	var (
 		success            uint64
 		fail               uint64
@@ -20,7 +20,7 @@ func ExampleNewRedisPool() {
 		concurrency        = limitedConcurrency * 2
 	)
 
-	pool := redishelper.NewRedisPool(":6379", "", maxActive, maxIdle, idleTimeout, wait)
+	pool := redishelper.NewPool(":6379", "", maxActive, maxIdle, idleTimeout, wait)
 	defer pool.Close()
 
 	sem := make(chan struct{}, limitedConcurrency)
