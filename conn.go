@@ -6,8 +6,8 @@ import (
 	"github.com/gomodule/redigo/redis"
 )
 
-// GetRedisConn gets the Redis connection.
-func GetRedisConn(redisAddr, redisPassword string) (c redis.Conn, err error) {
+// Dial connects to the Redis server and returns the connection.
+func Dial(redisAddr, redisPassword string) (c redis.Conn, err error) {
 	pongStr := ""
 
 	if c, err = redis.Dial("tcp", redisAddr); err != nil {

@@ -7,19 +7,19 @@ import (
 	"github.com/northbright/redishelper"
 )
 
-func ExampleGetRedisConn() {
+func ExampleDial() {
 	var err error
 	var c redis.Conn
 	redisAddr := ":6379"
 	redisPassword := ""
 
-	if c, err = redishelper.GetRedisConn(redisAddr, redisPassword); err != nil {
-		log.Printf("GetRedisConn() error: %v", err)
+	if c, err = redishelper.Dial(redisAddr, redisPassword); err != nil {
+		log.Printf("Dial() error: %v", err)
 		return
 	}
 	defer c.Close()
 
-	log.Printf("Get Redis connection successfully.\n")
+	log.Printf("Dial() successfully.")
 
 	// Output:
 }
